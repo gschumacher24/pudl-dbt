@@ -37,5 +37,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   pudl:
-    marts:
+    gold:
+      +schema: gold
       +materialized: table
+    silver:
+      +schema: silver
+      +materialized: view

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_pudl__state_fips_map
+  - name: static_state_fips_map
     description: TODO.
     columns: 
       - name: state_id_fips
@@ -19,7 +19,7 @@ models:
           - unique
           - not_null
 
-  - name: stg_jaffle_shop__stable_out_ferc714__hourly_estimated_state_demand_bronze
+  - name: stable_out_ferc714__hourly_estimated_state_demand
     description: TODO.
     columns: 
       - name: state_id_fips

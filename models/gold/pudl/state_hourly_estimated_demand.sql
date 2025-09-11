@@ -1,9 +1,9 @@
 with state_fips_map as (
-    select * from {{ ref('stg_pudl__state_fips_map') }}
+    select * from {{ ref('static_state_fips_map') }}
 ),
 
 state_hourly_estimated_demand as (
-    select * from {{ ref('stg_stable_out_ferc714__hourly_estimated_state_demand_bronze') }}
+    select * from {{ ref('stable_out_ferc714__hourly_estimated_state_demand') }}
 ),
 
 final as (
