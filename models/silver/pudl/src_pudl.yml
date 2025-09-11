@@ -6,5 +6,5 @@ sources:
     schema: bronze
     tables:
       - name: state_fips_map
-      - name: stable_out_ferc714__hourly_estimated_state_demand_bronze
+      - name: stable_out_ferc714__hourly_estimated_state_demand
         loaded_at_field: ingest_date
