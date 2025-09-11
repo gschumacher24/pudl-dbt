@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: pudl
-    database: s_dev_pudl
+    database: user_gschumacher
     schema: bronze
     tables:
       - name: state_fips_map
