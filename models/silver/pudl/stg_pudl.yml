@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: static_state_fips_map
+    description: TODO.
+    columns: 
+      - name: state_id_fips
+        description: TODO.
+        tests:
+          - unique
+          - not_null
+      - name: state_abbrev
+        description: TODO.
+        tests:
+          - unique
+      - name: state_name
+        description: TODO.
+        tests:
+          - unique
+          - not_null
+
+  - name: stable_out_ferc714__hourly_estimated_state_demand
+    description: TODO.
+    columns: 
+      - name: state_id_fips
+        description: TODO.
+        tests:
+          - not_null
+      - name: datetime_utc
+        description: TODO.
+        tests:
+          - not_null
+      - name: demand_mwh
+        description: TODO.
+        tests:
+          - not_null
+      - name: scaled_demand_mwh
+        description: TODO.
+        tests:
+          - not_null
