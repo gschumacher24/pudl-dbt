@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: pudl
-    database: user_gschumacher
+    # database: use the default target.database that's provided by connection settings.
     schema: bronze
     tables:
       - name: state_fips_map
