@@ -5,13 +5,16 @@ models:
     description: Mapping between US state/territory and FIPS code
     columns:
       - name: state_id_fips
+        data_type: varchar
         description: Two digit state FIPS code
         tests:
           - unique
           - not_null
       - name: state_abbrev
+        data_type: varchar
         description: Two character state/territory abbreviation
       - name: state_name
+        data_type: varchar
         description: Full state/territory abbreviation
         tests:
           - unique
@@ -21,6 +24,7 @@ models:
     description: Hourly time series of estimated hourly electricity demand for each state, scaled such that it matches the total electricity sales by state reported in EIA 861
     columns:
       - name: state_id_fips
+        data_type: varchar
         description: Two digit state FIPS code
         tests:
           - not_null
@@ -29,14 +33,17 @@ models:
                 field: state_id_fips
                 to: ref('static_state_fips_map')
       - name: datetime_utc
+        data_type: timestamp (utc)
         description: Date and time converted to Coordinated Universal Time (UTC)
         tests:
           - not_null
       - name: demand_mwh
+        data_type: number
         description: Electricity demand (energy) within a given timeframe
         tests:
           - not_null
       - name: scaled_demand_mwh
+        data_type: number
         description: Estimated electricity demand scaled by the total sales within a state
         tests:
           - not_null
