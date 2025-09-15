@@ -2,9 +2,54 @@ version: 2
 
 sources:
   - name: pudl
-    database: user_gschumacher
+    # database: use the default target.database that's provided by connection settings.
     schema: bronze
+    description: The landing zone for raw data
     tables:
       - name: state_fips_map
+        description: Mapping between US state/territory and FIPS code
+        columns: 
+          - name: state_id_fips
+            description: Two digit state FIPS code
+            tests:
+              - unique
+              - not_null
+          - name: state_abbrev
+            description: Two character state/territory abbreviation
+          - name: state_name
+            description: Full state/territory abbreviation
+            tests:
+              - unique
+              - not_null
       - name: stable_out_ferc714__hourly_estimated_state_demand
-        loaded_at_field: ingest_date
+        description: Hourly time series of estimated hourly electricity demand for each state, scaled such that it matches the total electricity sales by state reported in EIA 861
+        columns: 
+          - name: state_id_fips
+            description: Two digit state FIPS code
+            tests:
+              - not_null
+              - relationships:
+                  field: state_id_fips
+                  to: ref('static_state_fips_map')
+          - name: datetime_utc
+            description: Date and time converted to Coordinated Universal Time (UTC)
+            tests:
+              - not_null
+          - name: demand_mwh
+            description: Electricity demand (energy) within a given timeframe
+            tests:
+              - not_null
+          - name: scaled_demand_mwh
+            description: Estimated electricity demand scaled by the total sales within a state
+            tests:
+              - not_null
+          - name: filename
+            description: Name of the staged data file the current row belongs to. Includes the full path to the data file
+          - name: row_number
+            description: Row number for each record in the staged data file
+          - name: last_modified
+            description: Last modified timestamp of the staged data file the current row belongs to as TIMESTAMP_NTZ
+          - name: content_key
+            description: Checksum of the staged data file the current row belongs to
+          - name: ingest_date
+            description: Start timestamp of operation for each record in the staged data file as TIMESTAMP_LTZ
