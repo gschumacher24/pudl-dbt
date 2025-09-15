@@ -1,14 +1,9 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
-    {%- if custom_schema_name is none -%}
-
-        {{ default_schema }}
-
-    {%- else -%}
-
-        {{ custom_schema_name | trim }}
-
+    {%- if custom_schema_name is none -%} {{ default_schema }}
+    {%- elif "_pr" in target.name  -%} {{ custom_schema_name | trim }}_pr
+    {%- else -%} {{ custom_schema_name | trim }}
     {%- endif -%}
 
 {%- endmacro %}

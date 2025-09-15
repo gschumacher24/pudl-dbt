@@ -31,7 +31,7 @@ sources:
               - relationships:
                   arguments:
                     field: state_id_fips
-                    to: ref('static_state_fips_map')
+                    to: source('pudl', 'state_fips_map')
           - name: datetime_utc
             description: Date and time converted to Coordinated Universal Time (UTC)
             tests:
