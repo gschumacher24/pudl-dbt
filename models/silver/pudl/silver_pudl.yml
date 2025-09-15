@@ -3,43 +3,22 @@ version: 2
 models:
   - name: silver_state_fips_map
     description: Mapping between US state/territory and FIPS code
-    columns:
+    columns: 
       - name: state_id_fips
         description: Two digit state FIPS code
       - name: state_abbrev
         description: Two character state/territory abbreviation
       - name: state_name
         description: Full state/territory name
-<<<<<<<< HEAD:models/silver/pudl/silver_pudl.yml
-========
-        tests:
-          - unique
-          - not_null
->>>>>>>> 21ba21cea99c264675d234a32345f88ee9a1ae9c:models/silver/pudl/stg_pudl.yml
 
   - name: silver_stable_hourly_estimated_state_demand
     description: Hourly time series of estimated hourly electricity demand for each state, scaled such that it matches the total electricity sales by state reported in EIA 861
-    columns:
+    columns: 
       - name: state_id_fips
         description: Two digit state FIPS code
-<<<<<<<< HEAD:models/silver/pudl/silver_pudl.yml
-========
-        tests:
-          - not_null
-          - relationships:
-              arguments:
-                field: state_id_fips
-                to: ref('static_state_fips_map')
->>>>>>>> 21ba21cea99c264675d234a32345f88ee9a1ae9c:models/silver/pudl/stg_pudl.yml
       - name: datetime_utc
         description: Date and time converted to Coordinated Universal Time (UTC)
       - name: demand_mwh
         description: Electricity demand (energy) within a given timeframe
       - name: scaled_demand_mwh
-<<<<<<<< HEAD:models/silver/pudl/silver_pudl.yml
         description: Estimated electricity demand scaled by the total sales within a state
-========
-        description: Estimated electricity demand scaled by the total sales within a state
-        tests:
-          - not_null
->>>>>>>> 21ba21cea99c264675d234a32345f88ee9a1ae9c:models/silver/pudl/stg_pudl.yml
