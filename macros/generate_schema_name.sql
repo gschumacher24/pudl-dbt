@@ -1,7 +1,7 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
-    {%- if default_schema == 'dbt_cloud_pr' -%}
+    {%- if target == 'dbt_cloud_pr' -%}
 
         {{ default_schema }}_{{ custom_schema_name}}
 
