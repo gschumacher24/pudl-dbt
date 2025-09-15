@@ -12,7 +12,7 @@ models:
       - name: state_abbrev
         description: Two character state/territory abbreviation
       - name: state_name
-        description: Full state/territory abbreviation
+        description: Full state/territory name
         tests:
           - unique
           - not_null
