@@ -5,7 +5,7 @@
 
         {{ default_schema }}_{{ custom_schema_name}}
 
-    {%- if custom_schema_name is none -%}
+    {%- elif custom_schema_name is none -%}
 
         {{ default_schema }}
 
