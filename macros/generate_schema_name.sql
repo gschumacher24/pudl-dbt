@@ -5,6 +5,10 @@
 
         {{ default_schema }}
 
+    {%- elif default_schema == 'dbt_cloud_pr' -%}
+
+        {{ default_schema }}_{{ custom_schema_name}}
+
     {%- else -%}
 
         {{ custom_schema_name | trim }}
